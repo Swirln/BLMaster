@@ -7,7 +7,7 @@ BLMaster currently only supports Blockland version v21.
 ## Requirements
 
 * [xampp](http://apachefriends.org) (or an Apache/Nginx webserver)
-* [The latest version of PHP](secure.php.net/releases/)
+* [The latest version of PHP](https://secure.php.net/releases/)
 * MySQL
 * PDO (more @ `Installing`)
 
@@ -35,9 +35,11 @@ You have now successfully installed PDO on your install of xampp. Now you must p
 Please note that making a database for BLMaster is not necessary, as it makes one for you.
 If you did the tutorial correctly, you should be able to navigate to `localhost` and see this text:
 
-```FIELDS	IP	PORT	PASSWORDED	DEDICATED	SERVERNAME	PLAYERS	MAXPLAYERS	MAPNAME	BRICKCOUNT
+```
+FIELDS	IP	PORT	PASSWORDED	DEDICATED	SERVERNAME	PLAYERS	MAXPLAYERS	MAPNAME	BRICKCOUNT
 START
-END```
+END
+```
 
 If you don't see it, please [create a new issue](https://github.com/trashprovider56/BLMaster/issues) detailing your problem.
 
