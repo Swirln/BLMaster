@@ -1,7 +1,7 @@
 # BLMaster
 
-This repository contains the files for a Blockland "masterserver". What makes BLMaster unique from other open source masterservers is that it verifies the BL_ID sent to the server and appends the host's username to the servername.
-The masterserver is a server that provides the server list for Blockland so that players can join other servers.
+This repository contains the files for a Blockland "masterserver". What makes BLMaster unique from other open source masterservers is that it verifies the BL_ID sent to the server and appends the host's username to the servername.<br>
+The masterserver is a server that provides the server list for Blockland so that players can join other servers.<br>
 BLMaster currently only supports Blockland version v21.
 
 ## Requirements
@@ -45,11 +45,11 @@ If you don't see it, please [create a new issue](https://github.com/trashprovide
 
 ## Usage
 
-Once you're done Installing BLMaster, download (Script_CustomMS)[https://github.com/qoh/blockland-20/raw/master/blockland-20/Add-Ons/Script_CustomMS.zip] and place it in your `Add-Ons` folder.
-Afterward, set the masterserver to where your masterserver is located by typing `$Pref::MasterServer = "example.com:80";` in the console and then executing it. `example.com` would be where your masterserver is located on the Internet.
+Once you're done Installing BLMaster, download [Script_CustomMS](https://github.com/qoh/blockland-20/raw/master/blockland-20/Add-Ons/Script_CustomMS.zip) and place it in your `Add-Ons` folder.
+Afterward, set the masterserver to where your masterserver is located by typing `$Pref::MasterServer = "example.com:80";` in the console and then execute it. `example.com` would be where your masterserver is located on the Internet.
 
 ## Contributing
 
-I've only ran BLMaster on [xampp](http://apachefriends.org) so there might be issues when you run BLMaster on a webserver that isn't Apache (or Nginx). That also means that the `Installing` part only covers how to install BLMaster on [xampp](http://apachefriends.org).
-If you do encounter an issue and are able to solve it, please submit a [pull request](https://github.com/trashprovider56/BLMaster/pulls) and I'll see what I can do.
+I've only ran BLMaster on [xampp](http://apachefriends.org) so there might be issues when you run BLMaster on a webserver that isn't Apache (or Nginx). That also means that the `Installing` part only covers how to install BLMaster on [xampp](http://apachefriends.org).<br><br>
+If you do encounter an issue and are able to solve it, please submit a [pull request](https://github.com/trashprovider56/BLMaster/pulls) and I'll see what I can do.<br>
 If you know a way of installing BLMaster on other webservers, please submit a [pull request](https://github.com/trashprovider56/BLMaster/pulls) with a Markdown document showing instructions.
