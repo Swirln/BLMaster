@@ -1,4 +1,12 @@
 <?php
+	ob_start();
+	
+	include_once("configuration.php");
+	include_once("database.php");
+	include_once("kill.php");
+	killDead();
+	include_once("functions.php");
+	
 	if (debugging == true)
 	{
 		ini_set('display_errors', 1);
@@ -10,13 +18,5 @@
 		error_reporting(0);
 	}
 	
-	ob_start();
-	
-	include_once("configuration.php");
-	include_once("database.php");
-	include_once("kill.php");
-	killDead();
-	include_once("functions.php");
-	
-	date_default_timezone_set("America/Chicago");
+	date_default_timezone_set(timezone);
 ?>
