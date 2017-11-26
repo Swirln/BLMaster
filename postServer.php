@@ -132,7 +132,7 @@
 	$newArray = array_slice($file, -2, true);
 	$parts = preg_split("/[\t]/", $newArray[0]);
 	$username = $parts[1];
-	if (substr($checkContent[2], -1) == "s")
+	if (substr($username, -1) == "s")
 	{
 		$serverName = $username ."' ". $serverName;
 	}
