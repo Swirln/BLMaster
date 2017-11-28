@@ -1,8 +1,15 @@
 # BLMaster
 
-This repository contains the files for a Blockland "masterserver". What makes BLMaster unique from other open source masterservers is that it verifies the BL_ID sent to the server and appends the host's username to the servername.<br>
+This repository contains the files for a Blockland "masterserver".<br>
 The masterserver is a server that provides the server list for Blockland so that players can join other servers.<br>
-BLMaster currently only supports Blockland version v21.
+BLMaster currently only supports Blockland version v21.<br><br>
+BLMaster is not to be confused with Port's BLMaster (https://github.com/qoh/blmaster).
+
+## Features
+
+* Appends the host's username to servernames
+* Open source
+* Easy to setup
 
 ## Requirements
 
