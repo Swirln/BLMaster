@@ -1,12 +1,14 @@
 <?php
-	// ============== Database ==============
-	define("databaseUsername", "root");
-	define("databasePassword", "");
-	define("databaseHost", "localhost");
-	define("databasePort", 3306);
-	// ============== System ==============
-	define("debugging", true);
-	define("timezone", "America/Chicago");
-	// ============== Master Server ==============
-	define("timeout", 600); // How many seconds until servers die with no update
+	// ============== Database =================== \\
+	define('DATABASE_USER', 'root');
+	define('DATABASE_PASS', '');
+	define('DATABASE_NAME', 'blmaster');
+	define('DATABASE_HOST', 'localhost');
+	define('DATABASE_PORT', 3306);
+	// ============== System ===================== \\
+	define('DEBUGGING', true);
+	define('TIMEZONE', 'America/Chicago');
+	// ============== Master Server ============== \\
+	define('TIMEOUT', 600); // How many seconds until servers die with no update
+	define('SERVERNAME_VERSION', true); // If servernames will look like "[v21] Carrot's Building"
 ?>
