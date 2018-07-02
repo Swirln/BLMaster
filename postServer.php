@@ -207,9 +207,9 @@
 		$updating = true;
 		$query = 'UPDATE servers SET port = :newPort, passworded = :newPasswordDefinition, dedicated = :newDedicatedDefinition, serverName = :newServerName, players = :newPlayerCount, maxPlayers = :newMaxPlayers, gamemode = :newGamemode, brickCount = :newBrickCount, version = :newVersion, uptime = :newUptime, bl_id = :newBLID, key_id = :newKeyID WHERE ip = :currentIp AND port = :currentPort AND key_id = :newKeyID;';
 	}
-	elseif ($statement->rowCount() >= 3)
+	elseif ($statement->rowCount() >= SERVER_LIMIT)
 	{
-		exit('FAIL You can only have 3 servers per version online at a time.');
+		exit('FAIL You can only have ' . SERVER_LIMIT . 'servers per version online at a time.');
 	}
 	else
 	{
