@@ -27,6 +27,7 @@
 
 	if ($currentValuesFound !== $valuesCount)
 	{
+		$GLOBALS['database'] = null;
 		exit('FAIL Invalid POST params');
 	}
 
@@ -68,6 +69,7 @@
 		}
 		else
 		{
+			$GLOBALS['database'] = null;
 			exit('FAIL One of the POST values specified is not an integer');
 		}
 	}
@@ -80,6 +82,7 @@
 		}
 		else
 		{
+			$GLOBALS['database'] = null;
 			exit('FAIL Failed to convert BL_ID to key ID');
 		}
 	}
@@ -100,11 +103,13 @@
 
 	if ($bl_id < 0)
 	{
+		$GLOBALS['database'] = null;
 		exit('FAIL Invalid BL_ID ' . $bl_id);
 	}
 
 	if ($maxPlayers < 0)
 	{
+		$GLOBALS['database'] = null;
 		exit('FAIL Invalid player cap');
 	}
 
@@ -117,6 +122,7 @@
 	$check = trim(file_get_contents('http://mods.greek2me.us/statistics/user-lookup.php?blid='. $bl_id));
 	if (empty($check))
 	{
+		$GLOBALS['database'] = null;
 		exit('FAIL No user');
 	}
 
@@ -139,6 +145,7 @@
 
 	if (empty($username))
 	{
+		$GLOBALS['database'] = null;
 		exit('FAIL Failed to get username');
 	}
 	// Do auth
@@ -163,16 +170,19 @@
 			var_dump($parts);
 			if ($parts[0] != $bl_id)
 			{
+				$GLOBALS['database'] = null;
 				exit('FAIL Authserver returned different BL_ID than one sent');
 			}
 			// Successfully authed! Yay
 		}
 		elseif (strpos($result, 'error') !== false)
 		{
+			$GLOBALS['database'] = null;
 			exit('FAIL Authserver had error');
 		}
 		elseif (strpos($result, 'no') !== false)
 		{
+			$GLOBALS['database'] = null;
 			exit('FAIL Failed to auth');
 		}
 	}
@@ -209,12 +219,15 @@
 	}
 	elseif ($statement->rowCount() >= SERVER_LIMIT)
 	{
+		$GLOBALS['database'] = null;
 		exit('FAIL You can only have ' . SERVER_LIMIT . 'servers per version online at a time.');
 	}
 	else
 	{
 		$query = 'INSERT INTO servers(ip, port, passworded, dedicated, serverName, players, maxPlayers, gamemode, brickCount, version, uptime, bl_id, key_id) VALUES(:newIp, :newPort, :newPasswordDefinition, :newDedicatedDefinition, :newServerName, :newPlayerCount, :newMaxPlayers, :newGamemode, :newBrickCount, :newVersion, :newUptime, :newBLID, :newKeyID);';
 	}
+
+	$statement = null;
 
 	$statement = $GLOBALS['database']->prepare($query);
 
@@ -242,5 +255,7 @@
 	}
 
 	$statement->execute();
+	$statement = null;
+	$GLOBALS['database'] = null;
 	exit('SUCCESS ' . ($updating ? 'Successfully updated server!' : 'Successfully posted server!'));
 ?>

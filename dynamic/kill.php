@@ -8,6 +8,7 @@
 	$deadPort = $result['port'];
 	$deadUptime = $result['uptime'];
 	$deadKey = $result['key_id'];
+	$statement = null;
 	if ($elapsed > TIMEOUT)
 	{
 		$query = 'DELETE FROM servers WHERE ip = :deadIp AND port = :deadPort AND uptime = :deadUptime AND key_id = :deadKey;';
@@ -17,7 +18,8 @@
 		$statement->bindParam(':deadPort', $deadPort, PDO::PARAM_INT);
 		$statement->bindParam(':deadUptime', $deadUptime, PDO::PARAM_INT);
 		$statement->bindParam(':deadKey', $deadKey, PDO::PARAM_STR);
-		
+
 		$statement->execute();
+		$statement = null;
 	}
 ?>

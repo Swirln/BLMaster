@@ -50,8 +50,8 @@
 						) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 				";
 
-				$statement = $database->prepare($query);
-				$statement->execute();
+				$statement = $database->exec($query);
+				$statement = null;
 			}
 			catch (PDOException $e)
 			{

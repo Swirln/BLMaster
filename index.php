@@ -2,7 +2,7 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] . '/dynamic/include.php');
 	echo "FIELDS\tIP\tPORT\tPASSWORDED\tDEDICATED\tSERVERNAME\tPLAYERS\tMAXPLAYERS\tMAPNAME\tBRICKCOUNT\r\n";
 	echo "START\r\n";
-	
+
 	$query = 'SELECT * FROM servers;';
 	$statement = $GLOBALS['database']->prepare($query);
 
@@ -19,5 +19,7 @@
 		echo $result['gamemode'] . "\t";
 		echo $result['brickCount'] . "\r\n";
 	}
-	echo "END\r\n";
+	$statement = null;
+	$GLOBALS['database'] = null;
+	exit("END\r\n");
 ?>
