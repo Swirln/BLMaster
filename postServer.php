@@ -74,7 +74,14 @@
 
 	if ($version < 21)
 	{
-		$bl_id = keyToId($bl_id);
+		if (keyToID($bl_id))
+		{
+			$bl_id = keyToID($bl_id);
+		}
+		else
+		{
+			exit('FAIL Failed to convert BL_ID to key ID');
+		}
 	}
 	else
 	{
@@ -130,14 +137,50 @@
 	asort($interval);
 	$username = trim(key($interval));
 
+	if (empty($username))
+	{
+		exit('FAIL Failed to get username');
+	}
+	// Do auth
+	if ($ip !== '127.0.0.1' || $ip !== '::1')
+	{
+		$data = [
+			'NAME' => urlencode($username),
+			'IP' => urlencode($ip)
+		];
+		$options = [
+			'http' => [
+				'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+				'method' => 'POST',
+				'content' => http_build_query($data)
+			]
+		];
+		$context = stream_context_create($options);
+		$result = str_replace(trim(strtolower(file_get_contents('https://auth.blockland.us/authQuery.php', false, $context))), "\n", '');
+		if (strpos($result, 'yes') !== false)
+		{
+			$parts = explode(' ', $result);
+			var_dump($parts);
+			if ($parts[0] != $bl_id)
+			{
+				exit('FAIL Authserver returned different BL_ID than one sent');
+			}
+			// Successfully authed! Yay
+		}
+		elseif (strpos($result, 'error') !== false)
+		{
+			exit('FAIL Authserver had error');
+		}
+		elseif (strpos($result, 'no') !== false)
+		{
+			exit('FAIL Failed to auth');
+		}
+	}
+
 	// Make server name
 	if (substr($username, -1) == 's')
 	{
 		$serverName = $username . '\'' . $serverName;
-	}
-	elseif (empty($username))
-	{
-		exit('FAIL Internal error occurred');
 	}
 	else
 	{
