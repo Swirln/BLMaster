@@ -167,7 +167,6 @@
 		if (strpos($result, 'yes') !== false)
 		{
 			$parts = explode(' ', $result);
-			var_dump($parts);
 			if ($parts[0] != $bl_id)
 			{
 				$GLOBALS['database'] = null;
